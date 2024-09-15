@@ -10,6 +10,7 @@ import { computed, inject, onMounted, onUnmounted, ref } from 'vue';
 import BtnExcluir from '@/components/buttons/BtnDelete.vue';
 import BtnEdit from '@/components/buttons/BtnEdit.vue';
 import DlgConfirmation from '@/components/dialogs/DlgConfirmation.vue';
+import { squeezeToLowerCase } from '@/utils/stringUtil';
 
 const axios = inject<AxiosInstance>('axios')!;
 const btnProjectLoading = ref<boolean>(false);
@@ -21,9 +22,20 @@ const jsonProjects = ref<Project[]>();
 const overlayStore = useOverlayStore();
 const txfAddProjectName = ref<string>('');
 const txfEditProjectName = ref<string>('');
+const txfFilterProjectName = ref<string>('');
 
 const btnAddProjectDisabled = computed(() => txfAddProjectName.value.length === 0);
 const btnEditProjectDisabled = computed(() => txfEditProjectName.value.length === 0);
+const jsonProjectsFilter = computed(() => {
+  if (txfFilterProjectName.value.length === 0) return jsonProjects.value;
+
+  if (jsonProjects.value)
+    return jsonProjects.value.filter((j) =>
+      squeezeToLowerCase(j.name).includes(squeezeToLowerCase(txfFilterProjectName.value))
+    );
+
+  return [];
+});
 
 function btnAddProjectClick() {
   txfAddProjectName.value = '';
@@ -151,6 +163,10 @@ onUnmounted(() => (crudStore.project = undefined));
       />
     </DlgWindow>
 
+    <v-card-title class="text-center bg-secondary">PROJECTS</v-card-title>
+
+    <v-text-field v-model="txfFilterProjectName" label="Project name" class="ma-2" />
+
     <v-fade-transition leave-absolute>
       <v-table v-if="jsonProjects">
         <thead>
@@ -163,7 +179,7 @@ onUnmounted(() => (crudStore.project = undefined));
           </tr>
         </thead>
         <tbody>
-          <tr v-for="project in jsonProjects" :key="project.id">
+          <tr v-for="project in jsonProjectsFilter" :key="project.id">
             <td>
               {{ project.id }}
             </td>
@@ -217,7 +233,7 @@ onUnmounted(() => (crudStore.project = undefined));
 .v-table,
 .v-skeleton-loader {
   background-color: rgb(var(--v-theme-mix));
-  height: calc(100% - 52px);
+  height: calc(100% - 144px);
 }
 
 @media (max-width: 1024px) {
@@ -229,7 +245,7 @@ onUnmounted(() => (crudStore.project = undefined));
 
   .v-table,
   .v-skeleton-loader {
-    height: calc(100% - 52px);
+    height: calc(100% - 144px);
   }
 }
 </style>
