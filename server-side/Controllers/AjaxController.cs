@@ -14,6 +14,11 @@ namespace TaskMonitor.Controllers
             {
                 return func();
             }
+            catch (ServiceException ex)
+            {
+                Log.Debug(ex, "Expected \"service exception\" occurred when processing request");
+                return ex.ToObjectResult();
+            }
             catch (Exception ex)
             {
                 Log.Error(ex, "Unexpected \"exception\" occurred when processing request");
@@ -26,6 +31,11 @@ namespace TaskMonitor.Controllers
             try
             {
                 return await func();
+            }
+            catch (ServiceException ex)
+            {
+                Log.Debug(ex, "Expected \"service exception\" occurred when processing request");
+                return ex.ToObjectResult();
             }
             catch (Exception ex)
             {
