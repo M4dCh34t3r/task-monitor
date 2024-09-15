@@ -167,7 +167,8 @@ static void AddServices(WebApplicationBuilder builder)
     );
 
     builder
-        .Services.AddScoped<IAuthService, AuthService>();
+        .Services.AddScoped<IAuthService, AuthService>()
+        .AddScoped<IClientSetupService, ClientSetupService>();
 }
 
 static void AddSwagger(WebApplicationBuilder builder) =>
@@ -251,6 +252,8 @@ static bool HasInvalidConfiguration(IConfiguration configuration)
     string[] requiredKeys =
     [
         "ConnectionStrings:MSSQL",
+        "ClientSetup:Ready",
+        "Secrets:Salts:JWT",
         "Secrets:Salts:PBKDF2",
     ];
 
