@@ -1,0 +1,27 @@
+:root {
+  --mobile-breakpoint: 1024px;
+  --v-compact-height: 48px;
+
+  font-size: 14px;
+  overflow: hidden;
+  text-rendering: optimizeLegibility;
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    'Fira Sans',
+    'Droid Sans',
+    'Helvetica Neue',
+    sans-serif;
+  -moz-osx-font-smoothing: greyscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+ul {
+  list-style-type: none;
+}
