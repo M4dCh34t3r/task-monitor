@@ -50,6 +50,6 @@ const icnThemeIcon = computed(() => (inDarkMode.value ? 'mdi-weather-sunny' : 'm
 
 <style scoped>
 .v-list {
-  padding: 0
+  padding: 0;
 }
 </style>

@@ -5,12 +5,12 @@ function btnReloadPageClick() {
 </script>
 
 <template>
-    <v-card class="text-center mx-auto my-16 pa-4" max-width="480">
-        <v-icon class="icn-monitor" size="64">{{ 'mdi-monitor' }}</v-icon>
-        <v-card-title>The app's server is not running as expected</v-card-title>
-        <v-card-subtitle>Check if the "client setup" service is avaliable</v-card-subtitle>
-        <v-btn @click="btnReloadPageClick" text="reload page" class="mt-4" color="mix" />
-    </v-card>
+  <v-card class="text-center mx-auto my-16 pa-4" max-width="480">
+    <v-icon class="icn-monitor" size="64">{{ 'mdi-monitor' }}</v-icon>
+    <v-card-title>The app's server is not running as expected</v-card-title>
+    <v-card-subtitle>Check if the "client setup" service is avaliable</v-card-subtitle>
+    <v-btn @click="btnReloadPageClick" text="reload page" class="mt-4" color="mix" />
+  </v-card>
 </template>
 
 <style scoped>

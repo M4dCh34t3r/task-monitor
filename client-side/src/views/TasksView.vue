@@ -318,7 +318,7 @@ onMounted(async () => {
 });
 
 onUnmounted(() => {
-  clearInterval(intervalId)
+  clearInterval(intervalId);
   crudStore.task = undefined;
 });
 

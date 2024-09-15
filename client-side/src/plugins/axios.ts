@@ -1,7 +1,7 @@
-import axios, { AxiosError, HttpStatusCode, type AxiosInstance, type AxiosResponse } from 'axios';
 import { assertType } from '@/helpers/typeAssertHelper';
 import { useAuthStore, useOverlayStore, useSetupStore } from '@/stores';
 import type { ClientSetupDTO, ServiceExceptionDTO } from '@/typings';
+import axios, { AxiosError, HttpStatusCode, type AxiosInstance, type AxiosResponse } from 'axios';
 import type { Plugin } from 'vue';
 import router from './router';
 

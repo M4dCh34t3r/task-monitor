@@ -42,22 +42,20 @@ function snbTimeLeftInterval() {
     const minutesStr = seconds.toString().padStart(2, '0');
     const secondsStr = seconds.toString().padStart(2, '0');
     const snbTimeLeftTextSuffix =
-      minutes === 0
-        ? `${secondsStr} sec.`
-        : `${minutesStr} min. and ${secondsStr} sec.`;
+      minutes === 0 ? `${secondsStr} sec.` : `${minutesStr} min. and ${secondsStr} sec.`;
     snbTimeLeftText.value = `Your session will expire in ${snbTimeLeftTextSuffix}`;
     snbTimeLeft.value = true;
     return;
   }
-    
+
   if (overlayStore.dlgSessionExpired) {
     removeEventListeners();
     clearCountdowns();
     return;
   }
-  
+
   snbSessionExpired.value = true;
-    timerReset();
+  timerReset();
 }
 
 function timerReset() {

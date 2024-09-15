@@ -35,7 +35,7 @@ onMounted(async () => {
     <v-fade-transition mode="out-in">
       <v-main v-if="setupStore.ready">
         <v-fade-transition>
-          <div v-if="inMobileMode" >
+          <div v-if="inMobileMode">
             <OverlayStoreNavigationDrawers />
             <ApbMobile />
           </div>
@@ -56,7 +56,6 @@ onMounted(async () => {
       <v-main v-else-if="setupStore.ready === false">
         <CrdServerNotRunning />
       </v-main>
-
     </v-fade-transition>
   </v-app>
 </template>

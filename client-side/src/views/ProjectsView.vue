@@ -117,7 +117,7 @@ onMounted(async () => {
     jsonProjects.value = assertType<Project[]>({ project: res.data });
 });
 
-onUnmounted(() => crudStore.project = undefined);
+onUnmounted(() => (crudStore.project = undefined));
 </script>
 
 <template>

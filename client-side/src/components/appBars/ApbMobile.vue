@@ -26,7 +26,7 @@ const icnThemeIcon = computed(() => (inDarkMode.value ? 'mdi-weather-sunny' : 'm
           class="mr-2"
         />
       </v-scroll-y-transition>
-      <v-icon @click="() => ndwDefault = true" class="mr-2">
+      <v-icon @click="() => (ndwDefault = true)" class="mr-2">
         {{ 'mdi-menu' }}
       </v-icon>
     </template>
