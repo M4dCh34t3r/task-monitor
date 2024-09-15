@@ -282,9 +282,14 @@ function onInterval() {
 
   const timeSpentThisMonth = jsonTimeTrackers.value.map((t) => {
     if (typeof t.startDate === 'string' && isThisMonth(t.startDate)) {
+      const startDate = new Date(t.startDate);
+      const startDateUtcMs = startDate.getTime() - startDate.getTimezoneOffset() * 60 * 1000;
+      const endDate = typeof t.endDate === 'string' ? new Date(t.endDate) : new Date();
+      const endDateUtcMs = endDate.getTime() - endDate.getTimezoneOffset() * 60 * 1000;
+
       return typeof t.endDate === 'string'
-        ? Date.parse(t.endDate) - Date.parse(t.startDate)
-        : Date.parse(new Date().toISOString()) - Date.parse(t.startDate);
+        ? endDateUtcMs - startDateUtcMs
+        : Date.now() - startDateUtcMs;
     }
     return 0;
   });
