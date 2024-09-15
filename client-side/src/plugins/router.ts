@@ -3,6 +3,9 @@ import HomeView from '@/views/HomeView.vue';
 import LoginView from '@/views/LoginView.vue';
 import { createRouter, createWebHashHistory } from 'vue-router';
 
+const ProjectsView = () => import('@/views/ProjectsView.vue');
+const TasksView = () => import('@/views/TasksView.vue');
+
 const routes = [
   {
     path: '/',
@@ -18,6 +21,22 @@ const routes = [
     component: LoginView,
     meta: {
       title: 'Login page'
+    }
+  },
+  {
+    name: 'Projects',
+    path: '/Projects',
+    component: ProjectsView,
+    meta: {
+      title: 'Manage projects'
+    }
+  },
+  {
+    name: 'Tasks',
+    path: '/Tasks',
+    component: TasksView,
+    meta: {
+      title: 'Manage tasks'
     }
   }
 ];

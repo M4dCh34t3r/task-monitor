@@ -13,8 +13,8 @@ const icnThemeIcon = computed(() => (inDarkMode.value ? 'mdi-weather-sunny' : 'm
   <v-app-bar v-if="authStore.id" align="center" rounded="0">
     <template #prepend>
       <v-btn icon="mdi-home" height="36" width="36" rounded to="/" />
-      <v-btn append-icon="mdi-file-sign" text="Projects" width="8.75rem" />
-      <v-btn append-icon="mdi-calendar" width="8.75rem" text="Tasks" />
+      <v-btn append-icon="mdi-file-sign" text="Projects" to="/Projects" width="8.75rem" />
+      <v-btn append-icon="mdi-calendar" width="8.75rem" to="/Tasks" text="Tasks" />
     </template>
     <img src="/title.svg" height="32px" />
     <template #append>
@@ -47,3 +47,9 @@ const icnThemeIcon = computed(() => (inDarkMode.value ? 'mdi-weather-sunny' : 'm
     </template>
   </v-app-bar>
 </template>
+
+<style scoped>
+.v-list {
+  padding: 0
+}
+</style>

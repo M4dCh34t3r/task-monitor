@@ -1,12 +1,12 @@
 <template>
   <div class="justify-space-evenly align-center flex-column d-flex h-100">
-    <v-card class="text-center" width="160" hover>
+    <v-card class="text-center" to="/Projects" width="160" hover>
       <v-card-title>PROJECTS</v-card-title>
       <v-icon size="48">{{ 'mdi-file-sign' }}</v-icon>
       <v-card-text>Manage projects</v-card-text>
     </v-card>
 
-    <v-card class="text-center" width="160" hover>
+    <v-card class="text-center" to="/Tasks" width="160" hover>
       <v-card-title>TASKS</v-card-title>
       <v-icon size="48">{{ 'mdi-calendar' }}</v-icon>
       <v-card-text>Manage tasks</v-card-text>
