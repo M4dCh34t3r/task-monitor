@@ -10,7 +10,10 @@ namespace TaskMonitor.Services
     {
         Task<Models.TimeTracker> CreateAsync(Models.TimeTracker model);
         Task<IEnumerable<Models.TimeTracker>> ReadByCollaboratorIdAsync(Guid collaboratorId);
-        Task<IEnumerable<Models.TimeTracker>> ReadByTaskIdAsync(Guid taskId, bool includeCollaborators);
+        Task<IEnumerable<Models.TimeTracker>> ReadByTaskIdAsync(
+            Guid taskId,
+            bool includeCollaborators
+        );
         Task<Models.TimeTracker> SetStartDateAsync(Guid id);
         Task<Models.TimeTracker> SetEndDateAsync(Guid id);
         Task<Models.TimeTracker> UpdateByIdAsync(Guid id, Models.TimeTracker model);
@@ -49,7 +52,10 @@ namespace TaskMonitor.Services
                 .Where(t => t.CollaboratorId == collaboratorId)
                 .ToArrayAsync();
 
-        public async Task<IEnumerable<Models.TimeTracker>> ReadByTaskIdAsync(Guid taskId, bool includeCollaborator)
+        public async Task<IEnumerable<Models.TimeTracker>> ReadByTaskIdAsync(
+            Guid taskId,
+            bool includeCollaborator
+        )
         {
             var timeTrackers = _context
                 .TimeTrackers.AsNoTracking()

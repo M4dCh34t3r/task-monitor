@@ -83,7 +83,10 @@ namespace TaskMonitor.Context
 
             modelBuilder.Entity<User>().HasIndex(u => u.UserName).IsUnique();
             modelBuilder.Entity<User>().Property(c => c.Id).HasDefaultValueSql("NEWID()");
-            modelBuilder.Entity<User>().Property(u => u.CreatedAt).HasDefaultValueSql("GETUTCDATE()");
+            modelBuilder
+                .Entity<User>()
+                .Property(u => u.CreatedAt)
+                .HasDefaultValueSql("GETUTCDATE()");
 
             modelBuilder.Entity<Collaborator>().HasData(collaboratorOne);
             modelBuilder.Entity<Collaborator>().HasData(collaboratorTwo);
