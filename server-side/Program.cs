@@ -173,6 +173,7 @@ static void AddServices(WebApplicationBuilder builder)
         .AddScoped<IClientSetupService, ClientSetupService>()
         .AddScoped<ICollaboratorService, CollaboratorService>()
         .AddScoped<IProjectService, ProjectService>()
+        .AddScoped<ITaskService, TaskService>()
         .AddScoped<ITimeTrackerService, TimeTrackerService>();
 }
 
