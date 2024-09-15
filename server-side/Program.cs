@@ -9,6 +9,7 @@ using Serilog.Events;
 using Serilog.Templates;
 using Serilog.Templates.Themes;
 using TaskMonitor.Context;
+using TaskMonitor.Middlewares;
 using TaskMonitor.Services;
 
 const string LoggerTemplate =
@@ -77,6 +78,7 @@ static WebApplication BuildWebApp(string[] args)
 
     app.UseAuthentication();
     app.UseAuthorization();
+    app.UseJwtMiddleware();
     app.MapControllers();
 
     return app;
@@ -168,7 +170,8 @@ static void AddServices(WebApplicationBuilder builder)
 
     builder
         .Services.AddScoped<IAuthService, AuthService>()
-        .AddScoped<IClientSetupService, ClientSetupService>();
+        .AddScoped<IClientSetupService, ClientSetupService>()
+        .AddScoped<ICollaboratorService, CollaboratorService>();
 }
 
 static void AddSwagger(WebApplicationBuilder builder) =>
