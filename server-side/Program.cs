@@ -165,6 +165,9 @@ static void AddServices(WebApplicationBuilder builder)
     builder.Services.AddDbContext<AppDbContext>(o =>
         o.UseSqlServer(builder.Configuration.GetConnectionString("MSSQL"))
     );
+
+    builder
+        .Services.AddScoped<IAuthService, AuthService>();
 }
 
 static void AddSwagger(WebApplicationBuilder builder) =>
