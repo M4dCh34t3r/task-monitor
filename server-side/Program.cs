@@ -171,7 +171,8 @@ static void AddServices(WebApplicationBuilder builder)
     builder
         .Services.AddScoped<IAuthService, AuthService>()
         .AddScoped<IClientSetupService, ClientSetupService>()
-        .AddScoped<ICollaboratorService, CollaboratorService>();
+        .AddScoped<ICollaboratorService, CollaboratorService>()
+        .AddScoped<ITimeTrackerService, TimeTrackerService>();
 }
 
 static void AddSwagger(WebApplicationBuilder builder) =>
